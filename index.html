@@ -915,6 +915,12 @@
         function closeTable() {
             tablePopup.classList.remove("show");
         }
+        tablePopup.addEventListener("click", (event) => {
+            // Chỉ đóng khi bấm vào nền bên ngoài bảng
+            if (event.target === tablePopup) {
+                closeTable();
+            }
+        });
         const thongtin1 = [{ name: "Nguyễn Văn An", hometown: "Hà Nội", birth: 1946, death: 1968, grave: "Hàng 1 - Lô 1" }];
         const thongtin2 = [{ name: "Trần Văn Bình", hometown: "Nam Định", birth: 1947, death: 1969, grave: "Hàng 1 - Lô 2" }];
         const thongtin3 = [{ name: "Lê Văn Cường", hometown: "Thanh Hóa", birth: 1948, death: 1970, grave: "Hàng 1 - Lô 3" }];
