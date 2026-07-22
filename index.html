@@ -361,12 +361,19 @@
         }
 
         .bang {
-            width: 90%;
+            /* Desktop: bảng rộng bằng khung popup */
+            width: 100%;
             max-width: 1400px;
+
+            /* Mobile: bảng không bị ép nhỏ, người dùng sẽ vuốt ngang */
             min-width: 600px;
+
             max-height: 90vh;
             border-collapse: collapse;
-            margin: auto;
+
+            /* Không dùng margin: auto vì nó làm bảng bị căn giữa và mất mép trái */
+            margin: 0;
+
             font-size: 18px;
             opacity: 0;
             transform: scale(.8);
@@ -378,10 +385,24 @@
         }
 
         .table-box {
+            /* Khung bảng luôn nằm gọn trong màn hình */
+            width: min(90vw, 1400px);
+            max-width: calc(100vw - 32px);
+
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 18px;
+
+            /* Khi bảng rộng hơn điện thoại, cho phép vuốt ngang */
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table-box .btn {
+            align-self: center;
+            text-align: center;
         }
 
         .sodo {
@@ -560,12 +581,27 @@
             }
 
             .table-wrapper {
+                /* Nền popup chiếm trọn màn hình */
+                overflow: hidden;
+                padding: 16px;
+            }
+
+            .table-box {
+                /* Chừa 16px mỗi bên, không bị tràn màn hình */
+                width: 100%;
+                max-width: 100%;
+
+                /* Vuốt ngang trên bảng để xem các cột bên phải */
                 overflow-x: auto;
+                overflow-y: hidden;
             }
 
             .bang {
+                /* Chiều rộng thật của bảng; màn hình nhỏ sẽ cuộn ngang */
                 min-width: 520px;
+                width: 520px;
                 font-size: 13px;
+                margin: 0;
             }
 
             .bang th,
